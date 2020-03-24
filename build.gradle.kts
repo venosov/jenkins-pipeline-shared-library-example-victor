@@ -28,4 +28,5 @@ sourceSets["test"].withConvention(GroovySourceSet::class)  {
 
 sourceSets["main"].withConvention(GroovySourceSet::class)  {
     groovy.srcDir("src")
+    groovy.srcDir("vars")
 }
