@@ -19,6 +19,7 @@ dependencies {
     compileOnly("org.codehaus.groovy:groovy-all:3.0.2")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
     testImplementation("com.lesfurets:jenkins-pipeline-unit:1.3")
+    testImplementation("org.mockito:mockito-core:3.3.3")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.0")
 }
 
