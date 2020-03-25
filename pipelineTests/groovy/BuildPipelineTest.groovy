@@ -18,6 +18,7 @@ class BuildPipelineTest extends BasePipelineTest {
         helper.registerAllowedMethod('agent', [Closure.class], null)
         helper.registerAllowedMethod('stages', [Closure.class], null)
         helper.registerAllowedMethod('steps', [Closure.class], null)
+        helper.registerAllowedMethod('script', [Closure.class], null)
         helper.registerAllowedMethod('readMavenPom', [Map.class], null)
         binding.setVariable('none', {})
         binding.setVariable('any', {})
