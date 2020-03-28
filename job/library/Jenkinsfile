@@ -1,0 +1,4 @@
+package job.library
+
+@Library('milib') _
+buildPipeline()

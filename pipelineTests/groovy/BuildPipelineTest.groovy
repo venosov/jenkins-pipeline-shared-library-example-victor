@@ -3,6 +3,9 @@ import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 
+import static com.lesfurets.jenkins.unit.global.lib.GitSource.gitSource
+import static com.lesfurets.jenkins.unit.global.lib.LibraryConfiguration.library
+
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class BuildPipelineTest extends BasePipelineTest {
 
@@ -22,13 +25,22 @@ class BuildPipelineTest extends BasePipelineTest {
         helper.registerAllowedMethod('readMavenPom', [Map.class], null)
         binding.setVariable('none', {})
         binding.setVariable('any', {})
+        String clonePath = '/tmp'
+
+        def library = library()
+                .name('milib')
+                .retriever(gitSource('https://github.com/venosov/jenkins-pipeline-shared-library-example-victor.git'))
+                .targetPath(clonePath)
+                .defaultVersion("master")
+                .allowOverride(true)
+                .implicit(false)
+                .build()
+        helper.registerSharedLibrary(library)
     }
 
     @Test
     void test() {
-        def script = loadScript('vars/buildPipeline.groovy')
-        script.call()
+        runScript("job/library/Jenkinsfile")
         printCallStack()
-        assertJobStatusSuccess()
     }
 }
